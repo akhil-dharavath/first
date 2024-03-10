@@ -25,6 +25,7 @@ const sections = [
 
 const App = () => {
   const [blogs, setBlogs] = useState(blogList);
+  const [disabledAccts,setDisabledAccts] = useState([]);
   return (
     <div className="app">
       <BrowserRouter>
@@ -33,6 +34,7 @@ const App = () => {
           sections={sections}
           blogs={blogs}
           setBlogs={setBlogs}
+          setDisabledAccts={setDisabledAccts}
         />
         <Routes>
           <Route path="/" exact element={<BlogList blogs={blogs} />} />
@@ -55,7 +57,7 @@ const App = () => {
             path="/blog/:id"
             element={<Blog blogs={blogs} setBlogs={setBlogs} />}
           />
-          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/login" element={<Login disabledAccts={disabledAccts} />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="*" element={<PageNotFound />}/>
         </Routes>

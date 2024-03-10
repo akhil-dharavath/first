@@ -1,5 +1,4 @@
 import * as React from "react";
-// import PropTypes from "prop-types";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 // import IconButton from "@mui/material/IconButton";
@@ -10,7 +9,6 @@ import {
   Box,
   FormControl,
   InputLabel,
-  Link as MUILink,
   MenuItem,
   Select,
   Switch,
@@ -29,7 +27,7 @@ import { useTheme } from "@mui/material/styles";
 import { login } from "../config/login";
 
 function Header(props) {
-  const { sections, title, blogs, setBlogs } = props;
+  const { sections, title, blogs, setBlogs, setDisabledAccts } = props;
 
   const [hide, setHide] = useState(true);
   const location = useLocation();
@@ -127,10 +125,14 @@ function Header(props) {
     });
   };
 
-  const handleUpdate=()=>{
+  const handleUpdate = () => {
     setShow(false);
-    console.log(selectedSwitches);
-  }
+    localStorage.setItem("selectedIds", selectedSwitches);
+    setDisabledAccts(selectedSwitches);
+  };
+
+  const selectedIds = localStorage.getItem("selectedIds");
+  const ids = selectedIds.split(",");
 
   return (
     <>
@@ -150,14 +152,6 @@ function Header(props) {
                 {title}
               </Link>
             </Typography>
-            {/* <IconButton sx={{ width: "auto" }}>
-              <SearchIcon />
-            </IconButton> */}
-            {/* <Link to={"/auth/login"}>
-              <Button variant="outlined" size="small" sx={{ width: "auto" }}>
-                Sign In
-              </Button>
-            </Link> */}
             <Button
               sx={{ width: "auto" }}
               // color="secondary"
@@ -210,16 +204,6 @@ function Header(props) {
                     required
                     type="date"
                   />
-                  {/* <TextField
-                    className={"my-2"}
-                    fullWidth
-                    label="Category"
-                    variant="outlined"
-                    value={addPost.category}
-                    name="category"
-                    onChange={(e) => handleChange(e)}
-                    required
-                  /> */}
                   <FormControl fullWidth size="small">
                     <InputLabel id="demo-simple-select-label">
                       Category
@@ -295,7 +279,6 @@ function Header(props) {
                 {localStorage.getItem("name") &&
                   localStorage.getItem("name").slice(0, 1).toUpperCase()}
               </Avatar>
-              {/* Dropdown */}
             </a>
             <ul className="dropdown-menu">
               <li>
@@ -342,7 +325,6 @@ function Header(props) {
                 </Link>
               </li>
             </ul>
-            {/* <Button variant="contained" sx={{width:'auto'}}>Profile</Button> */}
           </Toolbar>
           <Toolbar
             component="nav"
@@ -350,18 +332,18 @@ function Header(props) {
             sx={{ justifyContent: "space-between", overflowX: "auto" }}
           >
             {sections.map((section) => (
-              <MUILink
-                color="inherit"
-                noWrap
+              <div
+                // color="inherit"
+                // noWrap
+                // variant="body2"
+                // // href={section.url}
+                // sx={{ p: 1, flexShrink: 0 }}
                 key={section.title}
-                variant="body2"
-                // href={section.url}
-                sx={{ p: 1, flexShrink: 0 }}
               >
                 <Link to={section.url} style={{ color: "black" }}>
                   {section.title}
                 </Link>
-              </MUILink>
+              </div>
             ))}
           </Toolbar>
         </>
@@ -372,15 +354,33 @@ function Header(props) {
           <DialogContent>
             {login &&
               login.length > 0 &&
-              login.filter(user=>user.role!=="Administrator").map((user) => (
-                <Box sx={{display:'flex',justifyContent:'space-between'}}>
-                  <Typography>{user.name}</Typography>
-                  <Switch defaultChecked onChange={() => handleSwitchToggle(user.id)} />
-                </Box>
-              ))}
+              login
+                .filter((user) => user.role !== "Administrator")
+                .map((user) => (
+                  <Box
+                  key={user.id}
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <Typography>{user.name}</Typography>
+                    <Switch
+                      defaultChecked={
+                        ids.length > 0 &&
+                        ids.filter((acct) => acct === user.id.toString())
+                          .length > 0
+                          ? false
+                          : true
+                      }
+                      onChange={() => handleSwitchToggle(user.id)}
+                    />
+                  </Box>
+                ))}
           </DialogContent>
           <DialogActions>
-            <Button color="error" sx={{ width: "auto" }} onClick={() => setShow(false)}>
+            <Button
+              color="error"
+              sx={{ width: "auto" }}
+              onClick={() => setShow(false)}
+            >
               Close
             </Button>
             <Button sx={{ width: "auto" }} onClick={() => handleUpdate()}>

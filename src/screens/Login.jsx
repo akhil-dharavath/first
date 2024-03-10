@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../config/login";
 
-const Login = () => {
+const Login = ({ disabledAccts }) => {
   const [details, setDetails] = useState({
     email: "",
     password: "",
@@ -18,6 +18,16 @@ const Login = () => {
     e.preventDefault();
     const data = login.filter((user) => user.email === details.email);
     if (data.length > 0 && data[0].password === details.password) {
+      const selectedIds = localStorage.getItem("selectedIds");
+      const ids = selectedIds.split(',');
+      // console.log(ids,data[0].id.toString());
+      if (
+        ids.length > 0 &&
+        ids.filter((acct) => acct === data[0].id.toString()).length > 0
+      ) {
+        alert("Invalid login credentials");
+        return;
+      }
       localStorage.setItem("name", data[0].name);
       localStorage.setItem("email", data[0].email);
       localStorage.setItem("password", data[0].password);
