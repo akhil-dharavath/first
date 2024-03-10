@@ -1,491 +1,623 @@
-export const blogs = {
-  Design: [
-    {
-      id: 1,
-      title: "Eames Lounge Chair",
-      description:
-        "Iconic mid-century modern lounge chair designed by Charles and Ray Eames. Known for its luxurious comfort and timeless design.",
-      image: "https://example.com/eames_lounge_chair.jpg",
-      author: "Charles and Ray Eames",
-      published_date: "1956-10-01",
-      category: "design",
-    },
-    {
-      id: 2,
-      title: "Helvetica Typeface",
-      description:
-        "One of the most widely used sans-serif typefaces, known for its clean and versatile design. Created by Max Miedinger and Eduard Hoffmann in 1957.",
-      image: "https://example.com/helvetica_typeface.jpg",
-      author: "Max Miedinger, Eduard Hoffmann",
-      published_date: "1957-01-01",
-      category: "design",
-    },
-    {
-      id: 3,
-      title: "Vitra Panton Chair",
-      description:
-        "Futuristic and sculptural chair designed by Verner Panton in the 1960s. Made from a single piece of molded plastic, it's a symbol of modern design.",
-      image: "https://example.com/panton_chair.jpg",
-      author: "Verner Panton",
-      published_date: "1967-01-01",
-      category: "design",
-    },
-    {
-      id: 4,
-      title: "Apple iPhone",
-      description:
-        "Revolutionary smartphone designed by Apple Inc., featuring a minimalist design, intuitive interface, and cutting-edge technology.",
-      image: "https://example.com/iphone.jpg",
-      author: "Apple Inc.",
-      published_date: "2007-06-29",
-      category: "design",
-    },
-    {
-      id: 5,
-      title: "Tesla Model S",
-      description:
-        "Electric luxury sedan designed by Tesla, known for its sleek and aerodynamic exterior, minimalist interior, and advanced technology.",
-      image: "https://example.com/tesla_model_s.jpg",
-      author: "Tesla, Inc.",
-      published_date: "2012-06-22",
-      category: "design",
-    },
-    {
-      id: 6,
-      title: "Bauhaus Movement",
-      description:
-        "Influential art and design movement that emerged in Germany in the early 20th century. Known for its emphasis on functionality, simplicity, and geometric forms.",
-      image: "https://example.com/bauhaus.jpg",
-      author: "Various",
-      published_date: "1919-04-01",
-      category: "design",
-    },
-    {
-      id: 7,
-      title: "Google Material Design",
-      description:
-        "Design language developed by Google, emphasizing minimalistic and flat design elements, vibrant colors, and smooth animations.",
-      image: "https://example.com/material_design.jpg",
-      author: "Google",
-      published_date: "2014-06-25",
-      category: "design",
-    },
-    {
-      id: 8,
-      title: "Frank Lloyd Wright's Fallingwater",
-      description:
-        "Architectural masterpiece designed by Frank Lloyd Wright, featuring cantilevered balconies, integration with nature, and organic architectural elements.",
-      image: "https://example.com/fallingwater.jpg",
-      author: "Frank Lloyd Wright",
-      published_date: "1935-10-01",
-      category: "design",
-    },
-    {
-      id: 9,
-      title: "Marimekko Unikko Print",
-      description:
-        "Iconic floral print designed by Maija Isola for Marimekko in 1964. Known for its bold colors and large-scale design, it became a symbol of Finnish design.",
-      image: "https://example.com/marimekko_unikko.jpg",
-      author: "Maija Isola",
-      published_date: "1964-01-01",
-      category: "design",
-    },
-    {
-      id: 10,
-      title: "Le Corbusier's LC2 Sofa",
-      description:
-        "Modernist sofa designed by Le Corbusier, featuring a tubular steel frame, plush cushions, and clean lines. It's a classic example of Bauhaus-inspired furniture.",
-      image: "https://example.com/lc2_sofa.jpg",
-      author: "Le Corbusier",
-      published_date: "1928-01-01",
-      category: "design",
-    },
-  ],
-  Technology: [
-    {
-      id: 1,
-      title: "The Evolution of Smartphone Cameras",
-      description:
-        "Explore the history and advancements in smartphone camera technology, from early VGA cameras to the latest multi-lens setups and computational photography algorithms.",
-      image: "https://example.com/smartphone_cameras.jpg",
-      author: "Tech Guru",
-      published_date: "2024-03-01",
-      category: "technology",
-    },
-    {
-      id: 2,
-      title: "Next-Generation Gaming Consoles: What to Expect",
-      description:
-        "Get a sneak peek into the upcoming gaming consoles, including rumored specifications, game titles, and potential release dates.",
-      image: "https://example.com/gaming_consoles.jpg",
-      author: "Gaming Expert",
-      published_date: "2024-03-02",
-      category: "technology",
-    },
-    {
-      id: 3,
-      title: "The Rise of Wearable Health Tech",
-      description:
-        "Discover how wearable devices are revolutionizing the healthcare industry, with features such as real-time health monitoring, fitness tracking, and remote patient monitoring.",
-      image: "https://example.com/wearable_health_tech.jpg",
-      author: "HealthTech Insider",
-      published_date: "2024-03-03",
-      category: "technology",
-    },
-    {
-      id: 4,
-      title: "Exploring the Potential of AI in Agriculture",
-      description:
-        "Learn about the applications of artificial intelligence in agriculture, including precision farming, crop monitoring, and automated harvesting techniques.",
-      image: "https://example.com/ai_agriculture.jpg",
-      author: "AgriTech Enthusiast",
-      published_date: "2024-03-04",
-      category: "technology",
-    },
-    {
-      id: 5,
-      title: "The Future of Electric Vehicles: Trends and Challenges",
-      description:
-        "Analyze the current state of the electric vehicle market, including technological advancements, infrastructure development, and regulatory challenges.",
-      image: "https://example.com/electric_vehicles.jpg",
-      author: "EV Insider",
-      published_date: "2024-03-05",
-      category: "technology",
-    },
-    {
-      id: 6,
-      title: "Decentralized Finance (DeFi): A Beginner's Guide",
-      description:
-        "Understand the basics of decentralized finance, including blockchain technology, smart contracts, and popular DeFi platforms such as Ethereum and Uniswap.",
-      image: "https://example.com/defi_guide.jpg",
-      author: "Crypto Enthusiast",
-      published_date: "2024-03-06",
-      category: "technology",
-    },
-    {
-      id: 7,
-      title: "The Impact of 5G on IoT Devices",
-      description:
-        "Explore how the rollout of 5G networks is transforming the Internet of Things (IoT) landscape, enabling faster data speeds, lower latency, and greater connectivity.",
-      image: "https://example.com/5g_iot.jpg",
-      author: "IoT Expert",
-      published_date: "2024-03-07",
-      category: "technology",
-    },
-    {
-      id: 8,
-      title: "Advancements in Drone Technology: What's Next?",
-      description:
-        "Discover the latest innovations in drone technology, including AI-powered flight control systems, swarming capabilities, and long-range communication protocols.",
-      image: "https://example.com/drone_technology.jpg",
-      author: "Drone Enthusiast",
-      published_date: "2024-03-08",
-      category: "technology",
-    },
-    {
-      id: 9,
-      title: "The Evolution of Smart Home Security Systems",
-      description:
-        "Track the evolution of smart home security systems, from basic motion sensors to advanced AI-powered surveillance cameras and smart locks.",
-      image: "https://example.com/smart_home_security.jpg",
-      author: "Home Security Expert",
-      published_date: "2024-03-09",
-      category: "technology",
-    },
-    {
-      id: 10,
-      title: "The Role of Blockchain in Supply Chain Management",
-      description:
-        "Explore how blockchain technology is revolutionizing supply chain management, improving transparency, traceability, and efficiency in global supply chains.",
-      image: "https://example.com/blockchain_supply_chain.jpg",
-      author: "Blockchain Advocate",
-      published_date: "2024-03-10",
-      category: "technology",
-    },
-  ],
-  Culture: [
-    {
-      id: 1,
-      title: "The Rise of TikTok: How it's Changing Social Media Culture",
-      description:
-        "Explore the cultural impact of TikTok, its influence on social media trends, and how it's reshaping content creation and consumption.",
-      image: "https://example.com/tiktok.jpg",
-      author: "Emma Johnson",
-      published_date: "2023-08-15",
-      category: "culture",
-    },
-    {
-      id: 2,
-      title: "The Art of Podcasting: A Cultural Phenomenon",
-      description:
-        "Delve into the world of podcasting, its cultural significance, and how it has evolved into a powerful medium for storytelling and expression.",
-      image: "https://example.com/podcasting.jpg",
-      author: "Michael Smith",
-      published_date: "2023-07-20",
-      category: "culture",
-    },
-    {
-      id: 3,
-      title: "The Evolution of Street Art: From Graffiti to Galleries",
-      description:
-        "Examine the evolution of street art, its roots in graffiti culture, and how it has gained recognition as a legitimate form of artistic expression.",
-      image: "https://example.com/street_art.jpg",
-      author: "Sophia Martinez",
-      published_date: "2023-09-10",
-      category: "culture",
-    },
-    {
-      id: 4,
-      title: "The Impact of Netflix on Pop Culture",
-      description:
-        "Investigate how Netflix has revolutionized the entertainment industry, shaped popular culture, and changed the way we consume TV shows and movies.",
-      image: "https://example.com/netflix.jpg",
-      author: "David Brown",
-      published_date: "2023-06-05",
-      category: "culture",
-    },
-    {
-      id: 5,
-      title: "The Influence of Hip Hop on Fashion",
-      description:
-        "Explore the intersection of hip hop culture and fashion, from streetwear trends to high-end designer collaborations, and its impact on mainstream style.",
-      image: "https://example.com/hip_hop_fashion.jpg",
-      author: "Jessica Thompson",
-      published_date: "2023-10-22",
-      category: "culture",
-    },
-    {
-      id: 6,
-      title: "The Role of Food Blogs in Culinary Culture",
-      description:
-        "Examine the rise of food blogging, its impact on culinary culture, and how it has transformed the way people discover, share, and experience food.",
-      image: "https://example.com/food_blogs.jpg",
-      author: "Daniel Lee",
-      published_date: "2023-11-18",
-      category: "culture",
-    },
-    {
-      id: 7,
-      title: "The Influence of K-Pop on Global Music Culture",
-      description:
-        "Investigate the global phenomenon of K-Pop, its cultural significance, and how it has transcended borders to become a dominant force in the music industry.",
-      image: "https://example.com/kpop.jpg",
-      author: "Emily Kim",
-      published_date: "2023-12-30",
-      category: "culture",
-    },
-  ],
-  Business: [
-    {
-      id: 1,
-      title: "Tesla's Record-breaking Quarterly Sales",
-      description:
-        "Tesla reports record-breaking quarterly sales, surpassing analyst expectations. The electric car company's stock surges as a result.",
-      image: "tesla_sales.jpg",
-      author: "John Doe",
-      published_date: "2024-03-01",
-      category: "Business",
-    },
-    {
-      id: 2,
-      title: "Amazon's Expansion into Healthcare",
-      description:
-        "Amazon announces plans for further expansion into the healthcare industry, launching new services and partnerships aimed at improving patient care and lowering costs.",
-      image: "amazon_healthcare.jpg",
-      author: "Jane Smith",
-      published_date: "2024-03-02",
-      category: "Business",
-    },
-    {
-      id: 3,
-      title: "Google's Acquisition of AI Startup",
-      description:
-        "Google acquires a promising artificial intelligence startup, signaling the tech giant's commitment to advancing AI technologies across its various products and services.",
-      image: "google_ai_acquisition.jpg",
-      author: "Michael Johnson",
-      published_date: "2024-03-03",
-      category: "Business",
-    },
-    {
-      id: 4,
-      title: "Apple's Launch of New Subscription Bundle",
-      description:
-        "Apple unveils a new subscription bundle, offering customers access to a variety of services including music, TV, news, and gaming at a discounted price.",
-      image: "apple_subscription_bundle.jpg",
-      author: "Emily Chen",
-      published_date: "2024-03-04",
-      category: "Business",
-    },
-    {
-      id: 5,
-      title: "Facebook's Data Privacy Controversy",
-      description:
-        "Facebook faces backlash over a data privacy controversy, raising concerns about the company's handling of user data and its impact on user privacy.",
-      image: "facebook_privacy_controversy.jpg",
-      author: "David Lee",
-      published_date: "2024-03-05",
-      category: "Business",
-    },
-    {
-      id: 6,
-      title: "Microsoft's Partnership with Renewable Energy Company",
-      description:
-        "Microsoft announces a partnership with a leading renewable energy company to invest in sustainable energy solutions for its data centers and operations.",
-      image: "microsoft_renewable_energy.jpg",
-      author: "Sarah Thompson",
-      published_date: "2024-03-06",
-      category: "Business",
-    },
-    {
-      id: 7,
-      title: "Alibaba's E-commerce Expansion in Europe",
-      description:
-        "Alibaba expands its e-commerce operations into Europe, launching new platforms and services to compete with local and international rivals.",
-      image: "alibaba_europe_expansion.jpg",
-      author: "Chris Williams",
-      published_date: "2024-03-07",
-      category: "Business",
-    },
-    {
-      id: 8,
-      title: "Uber's Investment in Autonomous Vehicles",
-      description:
-        "Uber announces a significant investment in autonomous vehicle technology, aiming to accelerate the development and deployment of self-driving cars for its ride-hailing service.",
-      image: "uber_autonomous_vehicles.jpg",
-      author: "Jessica Brown",
-      published_date: "2024-03-08",
-      category: "Business",
-    },
-  ],
-  Politics:[
-    {
-      "id": 1,
-      "title": "Election Results: Analysis of Key Races",
-      "description": "A comprehensive analysis of recent election results, highlighting key races, voter turnout, and implications for the political landscape.",
-      "image": "https://example.com/image1.jpg",
-      "author": "John Doe",
-      "published_date": "2024-03-09",
-      "category": "Politics"
-    },
-    {
-      "id": 2,
-      "title": "Government Policy on Climate Change: A Closer Look",
-      "description": "Examination of the government's stance and policies regarding climate change, including recent initiatives, challenges, and public response.",
-      "image": "https://example.com/image2.jpg",
-      "author": "Jane Smith",
-      "published_date": "2024-03-08",
-      "category": "Politics"
-    },
-    {
-      "id": 3,
-      "title": "International Relations: Diplomatic Tensions Rise",
-      "description": "Analysis of recent diplomatic tensions between nations, exploring causes, potential resolutions, and implications for global stability.",
-      "image": "https://example.com/image3.jpg",
-      "author": "Alex Johnson",
-      "published_date": "2024-03-07",
-      "category": "Politics"
-    },
-    {
-      "id": 4,
-      "title": "Legislative Reform: Proposed Changes to Tax Laws",
-      "description": "Discussion of proposed legislative reforms aimed at altering tax laws, including debates, public opinion, and potential economic impacts.",
-      "image": "https://example.com/image4.jpg",
-      "author": "Emily Brown",
-      "published_date": "2024-03-06",
-      "category": "Politics"
-    },
-    {
-      "id": 5,
-      "title": "Campaign Finance: Transparency vs. Corporate Interests",
-      "description": "Examination of issues surrounding campaign finance, including debates over transparency, influence of corporate interests, and potential reforms.",
-      "image": "https://example.com/image5.jpg",
-      "author": "Michael Wilson",
-      "published_date": "2024-03-05",
-      "category": "Politics"
-    },
-    {
-      "id": 6,
-      "title": "Economic Policy Shifts: Government Spending Priorities",
-      "description": "Analysis of recent shifts in economic policy, focusing on government spending priorities, budget allocations, and their impacts on various sectors.",
-      "image": "https://example.com/image6.jpg",
-      "author": "Sarah Lee",
-      "published_date": "2024-03-04",
-      "category": "Politics"
-    },
-    {
-      "id": 7,
-      "title": "Electoral Reforms: Enhancing Democracy's Integrity",
-      "description": "Discussion of proposed electoral reforms aimed at enhancing the integrity of democratic processes, including voting rights, election security, and campaign regulations.",
-      "image": "https://example.com/image7.jpg",
-      "author": "David Miller",
-      "published_date": "2024-03-03",
-      "category": "Politics"
-    }
-  ],
-  Opinion:[
-    {
-      "id": 1,
-      "title": "The Importance of Civic Engagement in Modern Society",
-      "description": "Exploring the significance of active civic participation and its impact on shaping a better society.",
-      "image": "https://example.com/opinion1.jpg",
-      "author": "John Smith",
-      "published_date": "2024-03-09",
-      "category": "Opinion"
-    },
-    {
-      "id": 2,
-      "title": "The Role of Social Media in Shaping Public Discourse",
-      "description": "Analyzing the influence of social media platforms on public opinion formation and political discourse.",
-      "image": "https://example.com/opinion2.jpg",
-      "author": "Emily Johnson",
-      "published_date": "2024-03-08",
-      "category": "Opinion"
-    },
-    {
-      "id": 3,
-      "title": "The Ethics of Artificial Intelligence: A Philosophical Perspective",
-      "description": "Reflecting on the ethical implications of AI technology and the need for ethical frameworks in its development and deployment.",
-      "image": "https://example.com/opinion3.jpg",
-      "author": "Michael Brown",
-      "published_date": "2024-03-07",
-      "category": "Opinion"
-    },
-    {
-      "id": 4,
-      "title": "The Future of Work: Embracing Automation with Caution",
-      "description": "Examining the potential impacts of automation on employment and society, and advocating for responsible adoption strategies.",
-      "image": "https://example.com/opinion4.jpg",
-      "author": "Sophia Lee",
-      "published_date": "2024-03-06",
-      "category": "Opinion"
-    },
-    {
-      "id": 5,
-      "title": "The Power of Empathy in Leadership",
-      "description": "Discussing the importance of empathy as a key trait in effective leadership and decision-making.",
-      "image": "https://example.com/opinion5.jpg",
-      "author": "David Miller",
-      "published_date": "2024-03-05",
-      "category": "Opinion"
-    },
-    {
-      "id": 6,
-      "title": "The Role of Education in Fostering Critical Thinking",
-      "description": "Arguing for the promotion of critical thinking skills in education to nurture informed and independent citizens.",
-      "image": "https://example.com/opinion6.jpg",
-      "author": "Sarah Wilson",
-      "published_date": "2024-03-04",
-      "category": "Opinion"
-    },
-    {
-      "id": 7,
-      "title": "Navigating Cultural Diversity: Embracing Pluralism in Society",
-      "description": "Advocating for the celebration of cultural diversity and the importance of inclusive societal frameworks.",
-      "image": "https://example.com/opinion7.jpg",
-      "author": "Alex Davis",
-      "published_date": "2024-03-03",
-      "category": "Opinion"
-    }
-  ],
-  Science:[]
-};
+export const blogList = [
+  {
+    id: 1,
+    title: "The Impact of Social Media on Mental Health: A Comparative Study",
+    description:
+      "Examining the influence of social media usage on mental health outcomes among different age groups and demographics.",
+    cover: "https://i.ytimg.com/vi/2S-7gD6-lW8/maxresdefault.jpg",
+    authorName: "Dr. Emily Johnson",
+    createdAt: "2024-03-09",
+    category: "Health and Wellness",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 3,
+    comments: [],
+  },
+  {
+    id: 2,
+    title:
+      "The Future of Artificial Intelligence in Education: Challenges and Opportunities",
+    description:
+      "Exploring the potential applications of artificial intelligence in transforming the education sector and addressing key challenges.",
+    cover: "https://thedatascientist.com/wp-content/uploads/2023/05/challenges-of-adopting-ai-in-education.jpg",
+    authorName: "Dr. James Smith",
+    createdAt: "2024-03-08",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 6,
+    comments: [],
+  },
+  {
+    id: 3,
+    title: "Navigating Career Transitions: Strategies for Success",
+    description:
+      "Providing guidance and practical tips for professionals navigating career transitions, including job changes, promotions, and career shifts.",
+    cover: "https://media.licdn.com/dms/image/D5612AQGPzANJFrBnSQ/article-cover_image-shrink_720_1280/0/1708511453518?e=2147483647&v=beta&t=ZLPAcSX3CSLQbbR-D9YBekQGnFSeg0nGInuPo-fKH7U",
+    authorName: "Dr. Sarah Brown",
+    createdAt: "2024-03-07",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 12,
+    comments: [],
+  },
+  {
+    id: 4,
+    title: "Exploring Cultural Diversity: Celebrating Heritage Month",
+    description:
+      "Highlighting the importance of cultural diversity and inclusivity, with a focus on celebrating different cultural heritages and traditions.",
+    cover: "https://www.continentalpress.com/wp-content/uploads/2022/02/shutterstock_423504913-scaled.jpg",
+    authorName: "Dr. Michael Wilson",
+    createdAt: "2024-03-06",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 2,
+    comments: [],
+  },
+  {
+    id: 5,
+    title:
+      "The Role of Sports in Youth Development: Building Resilience and Teamwork",
+    description:
+      "Examining the positive impact of sports participation on youth development, including physical fitness, social skills, and character building.",
+    cover: "https://sirc.ca/wp-content/uploads/2022/03/teamwork_celebrate-2-scaled.jpeg",
+    authorName: "Dr. Olivia Garcia",
+    createdAt: "2024-03-05",
+    category: "Sports",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 6,
+    comments: [],
+  },
+  {
+    id: 6,
+    title:
+      "Sustainable Travel Practices: Reducing Carbon Footprint While Exploring the World",
+    description:
+      "Promoting environmentally friendly travel practices and responsible tourism to minimize the ecological impact of travel.",
+    cover: "https://miro.medium.com/v2/resize:fit:1400/1*rdtVkloReASLADtRrBgpTg.png",
+    authorName: "Dr. Daniel Lee",
+    createdAt: "2024-03-04",
+    category: "Travel",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 13,
+    comments: [],
+  },
+  {
+    id: 7,
+    title:
+      "Civic Engagement in the Local Community: Empowering Citizen Participation",
+    description:
+      "Encouraging active civic engagement and community involvement to address local issues, promote social cohesion, and drive positive change.",
+    cover: "https://upload.wikimedia.org/wikipedia/commons/6/62/CI_boardwalk_Sandy_sweepers_jeh.jpg",
+    authorName: "Dr. Sophia Martinez",
+    createdAt: "2024-03-03",
+    category: "Local Community",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 7,
+    comments: [],
+  },
+  {
+    id: 8,
+    title: "Promoting Mental Health Awareness on Campus: Breaking the Stigma",
+    description:
+      "Raising awareness about mental health issues and providing support resources for students on college campuses to combat stigma and encourage help-seeking behaviors.",
+    cover: "https://i.ytimg.com/vi/nfU2OEgaUPs/hqdefault.jpg",
+    authorName: "Dr. Ethan Johnson",
+    createdAt: "2024-03-02",
+    category: "Campus",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 5,
+    comments: [],
+  },
+  {
+    id: 9,
+    title: "Alumni Spotlight: Success Stories and Career Journeys",
+    description:
+      "Showcasing the achievements and career journeys of notable alumni, providing inspiration and insights for current students and graduates.",
+    cover: "https://images.squarespace-cdn.com/content/v1/52bcea0ee4b0eedea1b68c76/1708619205199-JPK2ZR0X6YIKHE6SWKSD/1.png",
+    authorName: "Dr. Ava Anderson",
+    createdAt: "2024-03-01",
+    category: "Alumni",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 23,
+    comments: [],
+  },
+  {
+    id: 10,
+    title: "Exploring New Technologies in Healthcare: Enhancing Patient Care",
+    description:
+      "Investigating the latest advancements in healthcare technology, such as telemedicine, wearable devices, and AI-driven diagnostics, and their impact on improving patient outcomes.",
+    cover: "https://demigos.com/media/cache/1a/6c/1a6c201d1d274f6b9a08b79fb0ca9e61.jpg",
+    authorName: "Dr. Benjamin Smith",
+    createdAt: "2024-02-29",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 12,
+    comments: [],
+  },
+  {
+    id: 11,
+    title:
+      "Nutrition and Fitness Tips for Busy Professionals: Maintaining a Healthy Lifestyle",
+    description:
+      "Providing practical advice and strategies for busy professionals to prioritize nutrition, exercise, and self-care despite demanding schedules.",
+    cover: "https://divineyouwellness.com/wp-content/uploads/2021/06/Healthy-Lifestyle-tips-for-Bus-people.jpg",
+    authorName: "Dr. Emma Brown",
+    createdAt: "2024-02-28",
+    category: "Health and Wellness",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 10,
+    comments: [],
+  },
+  {
+    id: 12,
+    title:
+      "Social Media Etiquette in the Digital Age: Navigating Online Interactions",
+    description:
+      "Discussing the importance of social media etiquette and responsible online behavior in fostering positive digital interactions and maintaining professional relationships.",
+    cover: "https://www.ahaction.com/wp-content/uploads/2023/12/DALL%C2%B7E-2023-12-04-15.14.44-Illustration-of-a-professional-man-and-woman-navigating-through-a-symbolic-digital-landscape.-The-landscape-is-filled-with-icons-representing-modern-d.png",
+    authorName: "Dr. William Johnson",
+    createdAt: "2024-02-27",
+    category: "Social",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 45,
+    comments: [],
+  },
+  {
+    id: 13,
+    title: "Innovations in Renewable Energy: Harnessing Solar and Wind Power",
+    description:
+      "Highlighting recent innovations in renewable energy technology, such as solar panels, wind turbines, and energy storage solutions, to promote sustainability and combat climate change.",
+    cover: "https://as2.ftcdn.net/v2/jpg/05/68/65/55/1000_F_568655518_gl8Sr4llcc0kxaUVa4Km4rGKKvn3TvOt.jpg",
+    authorName: "Dr. Sophia Lee",
+    createdAt: "2024-02-26",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 34,
+    comments: [],
+  },
+  {
+    id: 14,
+    title:
+      "Stress Management Techniques for Academic Success: Building Resilience",
+    description:
+      "Providing students with effective stress management techniques and coping strategies to navigate academic challenges and maintain mental well-being.",
+    cover: "https://fastercapital.com/i/ECP-Training--Equipping-Employees-for-Effective-Crisis-Management--Building-Resilience-and-Stress-Management.webp",
+    authorName: "Dr. Matthew Wilson",
+    createdAt: "2024-02-25",
+    category: "Academic",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 23,
+    comments: [],
+  },
+  {
+    id: 15,
+    title:
+      "Promoting Diversity and Inclusion in the Workplace: Strategies for Employers",
+    description:
+      "Exploring best practices and strategies for fostering diversity, equity, and inclusion in the workplace to create a more supportive and inclusive environment for all employees.",
+    cover: "https://blog.vantagecircle.com/content/images/2020/11/inclusion-at-the-workplace.png",
+    authorName: "Dr. Isabella Garcia",
+    createdAt: "2024-02-24",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 12,
+    comments: [],
+  },
+  {
+    id: 16,
+    title:
+      "The Importance of Cultural Exchange Programs in Education: Fostering Global Understanding",
+    description:
+      "Examining the significance of cultural exchange programs in promoting cross-cultural understanding and fostering global citizenship among students.",
+    cover: "https://media.licdn.com/dms/image/D5612AQGXfdsx7eoIhA/article-cover_image-shrink_720_1280/0/1685193279257?e=2147483647&v=beta&t=EamM1OzxbM4YtAcLBtPIyn9XKFs_z_6hUa4a08n56qk",
+    authorName: "Dr. Emma Johnson",
+    createdAt: "2024-03-09",
+    category: "Education",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 45,
+    comments: [],
+  },
+  {
+    id: 17,
+    title:
+      "The Rise of Remote Work: Challenges and Opportunities in the Digital Era",
+    description:
+      "Exploring the growing trend of remote work, its impact on work-life balance, productivity, and the future of the traditional office environment.",
+    cover: "https://media.licdn.com/dms/image/D5612AQHx9XXcEDL1lg/article-cover_image-shrink_600_2000/0/1686973853537?e=2147483647&v=beta&t=9OdJen6VYReyDMyBDx2djD3MYyfL338YCb5DH7jOFBA",
+    authorName: "Dr. James Smith",
+    createdAt: "2024-03-08",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 43,
+    comments: [],
+  },
+  {
+    id: 18,
+    title: "Promoting Mental Health Awareness on Campus: Breaking the Stigma",
+    description:
+      "Raising awareness about mental health issues and providing support resources for students on college campuses to combat stigma and encourage help-seeking behaviors.",
+    cover: "https://medcitynews.com/uploads/2023/03/GettyImages-508287636-600x374.jpg",
+    authorName: "Dr. Sarah Brown",
+    createdAt: "2024-03-07",
+    category: "Campus",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 32,
+    comments: [],
+  },
+  {
+    id: 19,
+    title:
+      "Exploring Traditional Medicine Practices: Cultural Heritage and Healing Traditions",
+    description:
+      "Examining the cultural significance and healing properties of traditional medicine practices across different cultures and regions.",
+    cover: "https://miro.medium.com/v2/resize:fit:1200/0*3ck3y8mOuAqFfQbK.jpg",
+    authorName: "Dr. Michael Wilson",
+    createdAt: "2024-03-06",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 21,
+    comments: [],
+  },
+  {
+    id: 20,
+    title:
+      "The Impact of Social Media Influencers on Consumer Behavior: Trends and Insights",
+    description:
+      "Analyzing the influence of social media influencers on consumer purchasing decisions, brand loyalty, and marketing strategies in the digital age.",
+    cover: "https://media.sproutsocial.com/uploads/2023/11/4-ways-SM-impacts-consumer-behavior_Final.jpg",
+    authorName: "Dr. Olivia Garcia",
+    createdAt: "2024-03-05",
+    category: "Social",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 33,
+    comments: [],
+  },
+  {
+    id: 21,
+    title: "Exploring Renewable Energy Solutions for Sustainable Development",
+    description:
+      "Highlighting innovative renewable energy solutions and initiatives aimed at promoting sustainable development and combating climate change.",
+    cover: "https://www.lightcastlebd.com/wp-content/uploads/2023/05/energy-feature.webp",
+    authorName: "Dr. Daniel Lee",
+    createdAt: "2024-03-04",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 10,
+    comments: [],
+  },
+  {
+    id: 22,
+    title:
+      "The Role of Sports in Building Leadership Skills: Lessons from Team Dynamics",
+    description:
+      "Examining how participation in sports activities fosters leadership skills, teamwork, and resilience, drawing insights from team dynamics and coaching strategies.",
+    cover: "https://blogimage.vantagefit.io/vfitimages/2021/06/featured-image.png",
+    authorName: "Dr. Sophia Martinez",
+    createdAt: "2024-03-03",
+    category: "Sports",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 67,
+    comments: [],
+  },
+  {
+    id: 23,
+    title:
+      "Exploring Culinary Traditions Around the World: Gastronomic Adventures",
+    description:
+      "Embarking on a culinary journey to explore diverse culinary traditions, regional cuisines, and gastronomic delights from around the world.",
+    cover: "https://miro.medium.com/v2/resize:fit:1400/1*bU7SvINqf7dMCi6cTTIclw.jpeg",
+    authorName: "Dr. Ethan Johnson",
+    createdAt: "2024-03-02",
+    category: "Travel",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 45,
+    comments: [],
+  },
+  {
+    id: 24,
+    title:
+      "Promoting Health and Wellness in the Workplace: Strategies for Employee Wellbeing",
+    description:
+      "Implementing workplace wellness programs and initiatives to promote employee health, reduce stress, and improve productivity and morale.",
+    cover: "https://kredily.com/wp-content/uploads/2023/02/Enhancing-Employee-Wellbeing-and-Building-a-Positive-Workplace.png",
+    authorName: "Dr. Ava Anderson",
+    createdAt: "2024-03-01",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 23,
+    comments: [],
+  },
+  {
+    id: 25,
+    title:
+      "Advancements in Biotechnology: Cutting-edge Research and Innovations",
+    description:
+      "Highlighting recent breakthroughs and advancements in biotechnology, including gene editing, synthetic biology, and biomedical engineering.",
+    cover: "https://lifesciencesintelligence.com/images/site/features/BiotechGenetics_1.jpeg",
+    authorName: "Dr. Benjamin Smith",
+    createdAt: "2024-02-29",
+    category: "Science",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 25,
+    comments: [],
+  },
+  {
+    id: 26,
+    title:
+      "Exploring the Intersection of Technology and Art: Innovations in Digital Creativity",
+    description:
+      "Examining how technology is reshaping the field of art and creative expression, from digital art installations to interactive multimedia experiences.",
+    cover: "https://miro.medium.com/v2/resize:fit:1400/1*neTvblMQQRxtvgt-EaZ3hg.png",
+    authorName: "Dr. Emma Brown",
+    createdAt: "2024-02-28",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 12,
+    comments: [],
+  },
+  {
+    id: 27,
+    title:
+      "The Impact of Globalization on Local Communities: Challenges and Opportunities",
+    description:
+      "Analyzing the effects of globalization on local economies, cultures, and communities, and exploring strategies for sustainable development and resilience.",
+    cover: "https://www.usemultiplier.com/wp-content/uploads/2023/03/types-of-globalization.webp",
+    authorName: "Dr. William Johnson",
+    createdAt: "2024-02-27",
+    category: "Local Community",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 10,
+    comments: [],
+  },
+  {
+    id: 28,
+    title:
+      "Exploring Career Paths in Environmental Science: Opportunities for Impactful Work",
+    description:
+      "Highlighting diverse career opportunities in environmental science, conservation, and sustainability, and discussing the importance of environmental stewardship.",
+    cover: "https://collegecliffs.com/wp-content/uploads/2021/08/Environmental-Science-Career-featured-image.png",
+    authorName: "Dr. Isabella Garcia",
+    createdAt: "2024-02-26",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 23,
+    comments: [],
+  },
+  {
+    id: 29,
+    title:
+      "The Role of Technology in Disaster Management: Innovations for Resilience",
+    description:
+      "Examining how technology is being leveraged for disaster preparedness, response, and recovery efforts to enhance community resilience and save lives.",
+    cover: "https://www.aeologic.com/blog/wp-content/uploads/2022/11/Science-and-Technology-in-Disaster-Management-1180x664.jpg",
+    authorName: "Dr. Matthew Wilson",
+    createdAt: "2024-02-25",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 32,
+    comments: [],
+  },
+  {
+    id: 30,
+    title:
+      "Cultural Festivals and Celebrations: Preserving Traditions and Heritage",
+    description:
+      "Exploring the significance of cultural festivals and celebrations in preserving cultural heritage, fostering community cohesion, and promoting intercultural understanding.",
+    cover: "https://vajiramandravi.s3.us-east-1.amazonaws.com/media/2021/2/9/11/14/16/INTANGIBEL.jpg",
+    authorName: "Dr. Sophia Lee",
+    createdAt: "2024-02-24",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 45,
+    comments: [],
+  },
+  {
+    id: 31,
+    title:
+      "The Impact of Artificial Intelligence on Job Automation: Challenges and Opportunities",
+    description:
+      "Examining the effects of AI-driven automation on employment trends, skills development, and the future of work, along with potential strategies for adaptation and retraining.",
+    cover: "https://miro.medium.com/v2/resize:fit:1024/1*C2hGGL7WEyc9k-D5SiFzSQ.png",
+    authorName: "Dr. Emily Johnson",
+    createdAt: "2024-03-09",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 23,
+    comments: [],
+  },
+  {
+    id: 32,
+    title:
+      "Exploring Traditional Healing Practices: Ancient Wisdom and Modern Applications",
+    description:
+      "Delving into traditional healing modalities from different cultures and their relevance in contemporary healthcare, including herbal medicine, acupuncture, and Ayurveda.",
+    cover: "https://miro.medium.com/v2/resize:fit:1200/0*3ck3y8mOuAqFfQbK.jpg",
+    authorName: "Dr. James Smith",
+    createdAt: "2024-03-08",
+    category: "Health and Wellness",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 98,
+    comments: [],
+  },
+  {
+    id: 33,
+    title:
+      "The Role of Technology in Addressing Climate Change: Innovations for Sustainability",
+    description:
+      "Highlighting technological innovations and solutions aimed at mitigating climate change, reducing carbon emissions, and promoting sustainable development.",
+    cover: "https://swisscognitive.ch/wp-content/uploads/2023/06/The-Role-of-AI-in-Addressing-Climate-Change-and-Sustainability-Challenges.jpg",
+    authorName: "Dr. Sarah Brown",
+    createdAt: "2024-03-07",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 7,
+    comments: [],
+  },
+  {
+    id: 34,
+    title:
+      "The Power of Networking in Career Development: Strategies for Building Professional Connections",
+    description:
+      "Providing tips and strategies for effective networking to advance career goals, expand professional opportunities, and enhance personal brand.",
+    cover: "https://miro.medium.com/v2/resize:fit:750/1*OxZH7zga2Av-ZpcOaNBWPw.png",
+    authorName: "Dr. Michael Wilson",
+    createdAt: "2024-03-06",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 78,
+    comments: [],
+  },
+  {
+    id: 35,
+    title:
+      "The Art of Public Speaking: Tips for Effective Communication and Presentation Skills",
+    description:
+      "Offering practical advice and techniques for improving public speaking skills, including overcoming stage fright, structuring presentations, and engaging the audience.",
+    cover: "https://iimtu.edu.in/blog/wp-content/uploads/2023/07/Public-speaking-1.jpg",
+    authorName: "Dr. Olivia Garcia",
+    createdAt: "2024-03-05",
+    category: "Education",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 67,
+    comments: [],
+  },
+  {
+    id: 36,
+    title:
+      "Exploring Cultural Diversity in the Workplace: Strategies for Inclusive Organizational Culture",
+    description:
+      "Examining the importance of cultural diversity and inclusivity in the workplace, along with strategies for creating an inclusive organizational culture that values diverse perspectives and experiences.",
+    cover: "https://www.diversityresources.com/wp-content/uploads/2019/02/Managing-Cultural-Diversity-in-the-Workplace.jpg",
+    authorName: "Dr. Daniel Lee",
+    createdAt: "2024-03-04",
+    category: "Career",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 8,
+    comments: [],
+  },
+  {
+    id: 37,
+    title:
+      "The Rise of eSports: Evolution of Competitive Gaming and Its Impact on Society",
+    description:
+      "Tracing the evolution of eSports from niche hobby to mainstream entertainment, exploring its cultural significance, economic impact, and potential implications for education and society.",
+    cover: "https://www.stlouisfed.org/-/media/project/frbstl/stlouisfed/blog/2022/aug/ov/esport.jpg",
+    authorName: "Dr. Sophia Martinez",
+    createdAt: "2024-03-03",
+    category: "Sports",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 35,
+    comments: [],
+  },
+  {
+    id: 38,
+    title:
+      "The Future of Space Exploration: Advancements in Rocket Technology and Beyond",
+    description:
+      "Providing insights into the future of space exploration, including advancements in rocket technology, space tourism, colonization efforts, and the search for extraterrestrial life.",
+    cover: "https://miro.medium.com/v2/resize:fit:1400/1*LrzNcHOwHDXgc8ZNXl8MSA.png",
+    authorName: "Dr. Ethan Johnson",
+    createdAt: "2024-03-02",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 93,
+    comments: [],
+  },
+  {
+    id: 39,
+    title:
+      "Exploring Traditional Crafts and Artisans: Celebrating Cultural Heritage",
+    description:
+      "Highlighting traditional crafts, artisanal techniques, and cultural heritage preservation efforts around the world, and their significance in promoting cultural identity and community resilience.",
+    cover: "https://authindia.com/wp-content/uploads/2023/06/Indian-Handicrafts-Online.jpg",
+    authorName: "Dr. Ava Anderson",
+    createdAt: "2024-03-01",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 39,
+    comments: [],
+  },
+  {
+    id: 40,
+    title:
+      "The Science of Happiness: Understanding Positive Psychology and Wellbeing",
+    description:
+      "Exploring the science behind happiness, positive psychology interventions, and evidence-based strategies for enhancing wellbeing and life satisfaction.",
+    cover: "https://www.pursuit-of-happiness.org/wp-content/uploads/science-of-happiness-new-discoveries.png",
+    authorName: "Dr. Benjamin Smith",
+    createdAt: "2024-02-29",
+    category: "Health and Wellness",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 48,
+    comments: [],
+  },
+  {
+    id: 41,
+    title:
+      "Digital Privacy and Security: Safeguarding Personal Data in the Information Age",
+    description:
+      "Addressing the importance of digital privacy and security measures, including encryption, password management, and online safety practices, to protect personal data from cyber threats.",
+    cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTkMQW9syS_-O0rRbfaRZEnO5qFWOXtCqdnsCKUxfDHLG2uFMxg26QAK5cnWMW_eUt6Kg&usqp=CAU",
+    authorName: "Dr. Emma Brown",
+    createdAt: "2024-02-28",
+    category: "Technology",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 48,
+    comments: [],
+  },
+  {
+    id: 42,
+    title:
+      "Exploring Indigenous Knowledge Systems: Preserving Traditional Ecological Knowledge",
+    description:
+      "Examining indigenous knowledge systems and traditional ecological knowledge, their role in environmental conservation, sustainable resource management, and biodiversity preservation.",
+    cover: "https://e360.yale.edu/assets/site/WEB-res-yale-e360-lrivera.jpg",
+    authorName: "Dr. William Johnson",
+    createdAt: "2024-02-27",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 38,
+    comments: [],
+  },
+  {
+    id: 43,
+    title:
+      "The Role of Nutrition in Mental Health: Exploring the Gut-Brain Connection",
+    description:
+      "Investigating the relationship between nutrition and mental health, including the impact of diet on mood, cognition, and the gut-brain axis, and implications for mental wellbeing.",
+    cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLiaur6su7xij2uz3OFTAC_T2l-vniDdvCjFhr7gD-lC-i3I2Hi2SqzqJE_79ZPmxpuTg&usqp=CAU",
+    authorName: "Dr. Isabella Garcia",
+    createdAt: "2024-02-26",
+    category: "Health and Wellness",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 98,
+    comments: [],
+  },
+  {
+    id: 44,
+    title:
+      "The Impact of Climate Change on Wildlife Conservation: Challenges and Solutions",
+    description:
+      "Examining the effects of climate change on wildlife habitats, species extinction rates, and biodiversity loss, along with conservation strategies to mitigate these impacts and promote ecological resilience.",
+    cover: "https://cache.careers360.mobi/media/article_images/2023/1/12/wildlife-conservation.webp",
+    authorName: "Dr. Matthew Wilson",
+    createdAt: "2024-02-25",
+    category: "Environment",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 100,
+    comments: [],
+  },
+  {
+    id: 45,
+    title:
+      "The Evolution of Fashion Industry: Sustainability and Ethical Practices",
+    description:
+      "Tracing the evolution of the fashion industry towards sustainability and ethical practices, including eco-friendly materials, fair trade, and circular fashion initiatives.",
+    cover: "https://media.licdn.com/dms/image/D4D12AQEQDavlUI8b-Q/article-cover_image-shrink_720_1280/0/1700904965540?e=2147483647&v=beta&t=wqZycOo3m869XiisoRGKnVlhntQs2EVnrJ5RseQzrTc",
+    authorName: "Dr. Sophia Lee",
+    createdAt: "2024-02-24",
+    category: "Culture",
+    authorAvatar: require("../assets/author.jpg"),
+    likes: 312,
+    comments: [],
+  },
+];
