@@ -19,7 +19,7 @@ const Login = ({ disabledAccts }) => {
     const data = login.filter((user) => user.email === details.email);
     if (data.length > 0 && data[0].password === details.password) {
       const selectedIds = localStorage.getItem("selectedIds");
-      const ids = selectedIds.split(',');
+      const ids = selectedIds ? selectedIds.split(",") : [];
       // console.log(ids,data[0].id.toString());
       if (
         ids.length > 0 &&

@@ -132,7 +132,7 @@ function Header(props) {
   };
 
   const selectedIds = localStorage.getItem("selectedIds");
-  const ids = selectedIds.split(",");
+  const ids = selectedIds ? selectedIds.split(",") : [];
 
   return (
     <>

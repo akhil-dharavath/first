@@ -37,22 +37,22 @@ const App = () => {
           setDisabledAccts={setDisabledAccts}
         />
         <Routes>
-          <Route path="/" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/academic" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/career" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/campus" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/culture" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/local" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/social" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/sports" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/health" exact element={<BlogList blogs={blogs} />} />
+          <Route path="/" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/academic" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/career" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/campus" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/culture" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/local" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/social" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/sports" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/health" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
           <Route
             path="/technology"
             exact
-            element={<BlogList blogs={blogs} />}
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
           />
-          <Route path="/travel" exact element={<BlogList blogs={blogs} />} />
-          <Route path="/alumni" exact element={<BlogList blogs={blogs} />} />
+          <Route path="/travel" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route path="/alumni" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
           <Route
             path="/blog/:id"
             element={<Blog blogs={blogs} setBlogs={setBlogs} />}

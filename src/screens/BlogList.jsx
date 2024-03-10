@@ -4,7 +4,7 @@ import BlogItem from "../components/BlogItem";
 // import { blogList as blogs } from "../config/data";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const BlogList = ({ blogs }) => {
+const BlogList = ({ blogs, setBlogs }) => {
   const navigate = useNavigate();
   const location = useLocation().pathname.slice(1);
   const [blog, setBlog] = useState(blogs);
@@ -28,7 +28,7 @@ const BlogList = ({ blogs }) => {
       <div className="blogList-wrap">
         {blog &&
           blog.length > 0 &&
-          blog.map((blogs) => <BlogItem key={blogs.id} blog={blogs} />)}
+          blog.map((blo) => <BlogItem key={blo.id} blog={blo} blogs={blogs} setBlogs={setBlogs} />)}
       </div>
       {!blog ||
         (blog.length === 0 && (
