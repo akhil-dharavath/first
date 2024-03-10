@@ -28,6 +28,7 @@ const Login = ({ disabledAccts }) => {
         alert("Invalid login credentials");
         return;
       }
+      localStorage.setItem("userid", data[0].id);
       localStorage.setItem("name", data[0].name);
       localStorage.setItem("email", data[0].email);
       localStorage.setItem("password", data[0].password);

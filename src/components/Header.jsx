@@ -41,6 +41,7 @@ function Header(props) {
 
   const navigate = useNavigate();
   const handleLogout = () => {
+    localStorage.removeItem("userid");
     localStorage.removeItem("name");
     localStorage.removeItem("email");
     localStorage.removeItem("password");

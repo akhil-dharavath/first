@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Chip from "../components/Chip";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -38,8 +38,12 @@ const BlogItem = ({
   };
 
   const [comment, setComment] = useState("");
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(comment===''){
+      return;
+    }
     const okay = {
       description,
       title,
@@ -52,12 +56,19 @@ const BlogItem = ({
       likes,
       comments: [...comments, { user: id, comment }],
     };
-    console.log(okay);
-    const old = blogs.filter((blo) => blo.id !== id);
-    setBlogs([...old, { okay }]);
+    const old = blogs.filter((blo) => blo.id !== okay.id);
+    setBlogs([okay, ...old]);
+    const subCategory = category.split(' ');
     setComment("");
-    console.log(blogs);
+    navigate(`/${subCategory[0].toLowerCase()}`)
   };
+  
+  useEffect(() => {
+    navigate('/');
+    handleClose()
+    // setBlogs(blogs);
+    // eslint-disable-next-line
+  }, [blogs]);
 
   return (
     <div className="blogItem-wrap">
@@ -130,7 +141,7 @@ const BlogItem = ({
                   />
                   <button
                     className="btn btn-primary my-2 w-auto position-absolute"
-                    style={{right:'2%',top:'-3%'}}
+                    style={{ right: "2%", top: "-3%" }}
                     type="submit"
                   >
                     Post

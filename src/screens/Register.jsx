@@ -23,6 +23,7 @@ const Register = () => {
       if (data.length > 0) {
         alert("User with this email already exists!");
       } else {
+        localStorage.setItem("userid", Math.floor(Math.random()*4000));
         localStorage.setItem("name", details.username);
         localStorage.setItem("email", details.email);
         localStorage.setItem("password", details.password);

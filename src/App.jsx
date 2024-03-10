@@ -25,7 +25,7 @@ const sections = [
 
 const App = () => {
   const [blogs, setBlogs] = useState(blogList);
-  const [disabledAccts,setDisabledAccts] = useState([]);
+  const [disabledAccts, setDisabledAccts] = useState([]);
   return (
     <div className="app">
       <BrowserRouter>
@@ -37,29 +37,76 @@ const App = () => {
           setDisabledAccts={setDisabledAccts}
         />
         <Routes>
-          <Route path="/" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/academic" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/career" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/campus" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/culture" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/local" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/social" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/sports" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/health" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route
+            path="/"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/academic"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/career"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/campus"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/culture"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/local"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/social"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/sports"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/health"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
           <Route
             path="/technology"
             exact
             element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
           />
-          <Route path="/travel" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
-          <Route path="/alumni" exact element={<BlogList blogs={blogs} setBlogs={setBlogs} />} />
+          <Route
+            path="/travel"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
+          <Route
+            path="/alumni"
+            exact
+            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
+          />
           <Route
             path="/blog/:id"
             element={<Blog blogs={blogs} setBlogs={setBlogs} />}
           />
-          <Route path="/auth/login" element={<Login disabledAccts={disabledAccts} />} />
+          <Route
+            path="/auth/login"
+            element={<Login disabledAccts={disabledAccts} />}
+          />
           <Route path="/auth/register" element={<Register />} />
-          <Route path="*" element={<PageNotFound />}/>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
