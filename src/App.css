@@ -17,6 +17,10 @@ input {
   font-family: 'Montserrat', sans-serif;
 }
 
+.form-label{
+  margin-bottom: 5px !important;
+}
+
 .app{
   margin: 0px 50px;
 }

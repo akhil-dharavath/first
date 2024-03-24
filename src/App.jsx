@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Blog from "./screens/Blog";
@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import BlogList from "./screens/BlogList";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
-import { blogList } from "./config/blogs";
 import PageNotFound from "./screens/PageNotFound";
 
 const sections = [
@@ -24,87 +23,22 @@ const sections = [
 ];
 
 const App = () => {
-  const [blogs, setBlogs] = useState(blogList);
-  const [disabledAccts, setDisabledAccts] = useState([]);
   return (
     <div className="app">
       <BrowserRouter>
-        <Header
-          title="WisdomNest"
-          sections={sections}
-          blogs={blogs}
-          setBlogs={setBlogs}
-          setDisabledAccts={setDisabledAccts}
-        />
+        <Header title="WisdomNest" sections={sections} />
         <Routes>
-          <Route
-            path="/"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/academic"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/career"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/campus"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/culture"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/local"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/social"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/sports"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/health"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/technology"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/travel"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/alumni"
-            exact
-            element={<BlogList blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/blog/:id"
-            element={<Blog blogs={blogs} setBlogs={setBlogs} />}
-          />
-          <Route
-            path="/auth/login"
-            element={<Login disabledAccts={disabledAccts} />}
-          />
+          <Route path="/" exact element={<BlogList />} />
+          {sections.map((section) => (
+            <Route
+              key={section.url}
+              path={`/${section.url}`}
+              exact
+              element={<BlogList />}
+            />
+          ))}
+          <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

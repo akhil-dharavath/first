@@ -1,39 +1,47 @@
 import React, { useEffect, useState } from "react";
-// import './styles.css';
 import BlogItem from "../components/BlogItem";
-// import { blogList as blogs } from "../config/data";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getAllBlogsApi } from "../api/blogs";
 
-const BlogList = ({ blogs, setBlogs }) => {
+const BlogList = () => {
   const navigate = useNavigate();
   const location = useLocation().pathname.slice(1);
-  const [blog, setBlog] = useState(blogs);
+  const [blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    if (!localStorage.getItem("role")) {
+  const getBlogs = async () => {
+    const res = await getAllBlogsApi();
+    if (res.data) {
+      setBlogs(res.data);
+    } else {
+      // alert(res.response.data.message);
+    }
+  };
+  // useEffect(() => {
+  //   if (!localStorage.getItem("token")) {
+  //     navigate("/auth/login");
+  //   }
+  //   // eslint-disable-next-line
+  // }, [location]);
+  
+  useEffect(()=>{
+    getBlogs();
+    if (!localStorage.getItem("token")) {
       navigate("/auth/login");
     }
-    if (location === "") {
-      setBlog(blogs);
-    } else {
-      setBlog(
-        blogs.filter((li) => li.category.toLowerCase().includes(location))
-      );
-    }
     // eslint-disable-next-line
-  }, [location]);
+  },[])
 
   return (
     <>
       <div className="blogList-wrap">
-        {blog &&
-          blog.length > 0 &&
-          blog.map((blo) => <BlogItem key={blo.id} blog={blo} blogs={blogs} setBlogs={setBlogs} />)}
-      </div>
-      {!blog ||
-        (blog.length === 0 && (
+        {blogs && blogs.length > 0 ? (
+          blogs
+            .filter((blog) => blog.category.toLowerCase().includes(location))
+            .map((blog) => <BlogItem key={blog._id} blog={blog} />)
+        ) : (
           <p className="text-center mt-5">Trouble finding blogs</p>
-        ))}
+        )}
+      </div>
     </>
   );
 };

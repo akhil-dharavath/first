@@ -1,37 +1,29 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../config/login";
+import { registerApi } from "../api/authentication";
 
 const Register = () => {
   const [details, setDetails] = useState({
     username: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    role:""
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails({ ...details, [name]: value });
   };
 
-  const navigate = useNavigate()
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (details.password === details.confirmPassword) {
-      const data = login.filter((user) => user.email === details.email);
-      if (data.length > 0) {
-        alert("User with this email already exists!");
-      } else {
-        localStorage.setItem("userid", Math.floor(Math.random()*4000));
-        localStorage.setItem("name", details.username);
-        localStorage.setItem("email", details.email);
-        localStorage.setItem("password", details.password);
-        localStorage.setItem("role", "Student");
-        navigate("/");
-      }
+    const response = await registerApi(details);
+    if (response.data) {
+      localStorage.setItem("token", response.data.token);
+      navigate("/");
     } else {
-      alert("passwords doesnot match");
+      // alert(response.response.data.message);
     }
   };
 
@@ -41,7 +33,7 @@ const Register = () => {
       <div className="log-sign-right">
         <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
           <h1 className="mb-4">Create an account</h1>
-          <Form.Group className="mb-4" style={{ textAlign: "left" }}>
+          <Form.Group className="mb-3" style={{ textAlign: "left" }}>
             <Form.Label>Full Name</Form.Label>
             <Form.Control
               type="text"
@@ -51,7 +43,7 @@ const Register = () => {
               onChange={(e) => handleChange(e)}
             />
           </Form.Group>
-          <Form.Group className="mb-4" style={{ textAlign: "left" }}>
+          <Form.Group className="mb-3" style={{ textAlign: "left" }}>
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
@@ -61,7 +53,17 @@ const Register = () => {
               onChange={(e) => handleChange(e)}
             />
           </Form.Group>
-          <Form.Group className="mb-4" style={{ textAlign: "left" }}>
+          <Form.Group className="mb-3" style={{ textAlign: "left" }}>
+            <Form.Label>Role (Admin, Moderator, Student, Staff)</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Role"
+              name="role"
+              value={details.role}
+              onChange={(e) => handleChange(e)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-5" style={{ textAlign: "left" }}>
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -71,19 +73,7 @@ const Register = () => {
               onChange={(e) => handleChange(e)}
             />
           </Form.Group>
-
-          <Form.Group className="mb-4" style={{ textAlign: "left" }}>
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Confirm password"
-              name="confirmPassword"
-              value={details.confirmPassword}
-              onChange={(e) => handleChange(e)}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-4">
+          <Form.Group className="mb-3">
             <Button type="submit">Register</Button>
           </Form.Group>
           <p>

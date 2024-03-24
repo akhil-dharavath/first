@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../config/login";
+import { loginApi } from "../api/authentication";
 
-const Login = ({ disabledAccts }) => {
+const Login = () => {
   const [details, setDetails] = useState({
     email: "",
     password: "",
@@ -13,29 +13,14 @@ const Login = ({ disabledAccts }) => {
     setDetails({ ...details, [name]: value });
   };
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = login.filter((user) => user.email === details.email);
-    if (data.length > 0 && data[0].password === details.password) {
-      const selectedIds = localStorage.getItem("selectedIds");
-      const ids = selectedIds ? selectedIds.split(",") : [];
-      // console.log(ids,data[0].id.toString());
-      if (
-        ids.length > 0 &&
-        ids.filter((acct) => acct === data[0].id.toString()).length > 0
-      ) {
-        alert("Invalid login credentials");
-        return;
-      }
-      localStorage.setItem("userid", data[0].id);
-      localStorage.setItem("name", data[0].name);
-      localStorage.setItem("email", data[0].email);
-      localStorage.setItem("password", data[0].password);
-      localStorage.setItem("role", data[0].role);
+    const response = await loginApi(details);
+    if (response.data) {
+      localStorage.setItem("token", response.data.token);
       navigate("/");
     } else {
-      alert("Invalid login credentials!");
+      // alert(response.response.data.message);
     }
   };
 
