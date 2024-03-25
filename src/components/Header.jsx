@@ -96,7 +96,7 @@ function Header({ sections, title }) {
       const path = addPost.category.toLowerCase();
       navigate(`/${path}`);
     } else {
-      // alert(res.response.data.message);
+      alert(res.response.data.message);
     }
   };
 
@@ -108,17 +108,36 @@ function Header({ sections, title }) {
       if (res.data) {
         setUser(res.data);
       } else {
-        // alert(res.response.data.message);
+        alert(res.response.data.message);
       }
       if (res.data.role === "Administrator") {
         let resp = await getAllUsers();
         if (resp.data) {
           setUsers(resp.data);
         } else {
-          // alert(resp.response.data.message);
+          alert(resp.response.data.message);
         }
       }
     }
+  };
+
+  const fetchUsers = async () => {
+    let resp = await getAllUsers();
+    if (resp.data) {
+      setUsers(resp.data);
+    } else {
+      alert(resp.response.data.message);
+    }
+  };
+  
+  const handleEnableDisableUser = async (userId, enable) => {
+    if (enable) {
+      await enableUser(userId);
+    } else {
+      await disableUser(userId);
+    }
+    // Refetch users after enabling/disabling user
+    fetchUsers();
   };
 
   useEffect(() => {
@@ -349,11 +368,15 @@ function Header({ sections, title }) {
                   >
                     <Typography>{user.username}</Typography>
                     <Switch
+                      // defaultChecked={user.enable ? true : false}
+                      // onChange={() =>
+                      //   user.enable
+                      //     ? disableUser(user._id)
+                      //     : enableUser(user._id)
+                      // }
                       defaultChecked={user.enable ? true : false}
                       onChange={() =>
-                        user.enable
-                          ? disableUser(user._id)
-                          : enableUser(user._id)
+                        handleEnableDisableUser(user._id, !user.enable)
                       }
                     />
                   </Box>

@@ -17,7 +17,7 @@ const Blog = () => {
     if (res.data) {
       setBlog(res.data);
     } else {
-      // alert(res.response.data.messege);
+      alert(res.response.data.messege);
     }
   };
 
@@ -26,7 +26,7 @@ const Blog = () => {
     if (res.data) {
       setUser(res.data);
     } else {
-      // alert(res.response.data.messege);
+      alert(res.response.data.messege);
     }
   };
 
@@ -42,7 +42,7 @@ const Blog = () => {
     if (res.data) {
       navigate("/");
     } else {
-      // alert(res.response.data.message);
+      alert(res.response.data.message);
     }
   };
 

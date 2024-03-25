@@ -22,7 +22,7 @@ const BlogItem = ({
     comments,
   },
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -45,7 +45,7 @@ const BlogItem = ({
       handleClose();
       window.location.reload();
     } else {
-      // alert(res.response.data.message);
+      alert(res.response.data.message);
     }
   };
 
