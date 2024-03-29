@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Blog from "./screens/Blog";
@@ -23,12 +23,14 @@ const sections = [
 ];
 
 const App = () => {
+  const [search,setSearch]=useState('')
   return (
-    <div className="app">
+    <div className="">
       <BrowserRouter>
-        <Header title="WisdomNest" sections={sections} />
+        <Header title="WisdomNest" sections={sections} search={search} setSearch={setSearch} />
         <Routes>
-          <Route path="/" exact element={<BlogList />} />
+          <Route path="/" exact element={<BlogList search={search} />} />
+          <Route path="/unsubscribed" exact element={<BlogList search={search} />} />
           {sections.map((section) => (
             <Route
               key={section.url}

@@ -6,8 +6,11 @@ import {
   Avatar,
   Box,
   FormControl,
+  IconButton,
+  InputAdornment,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Select,
   Switch,
   TextField,
@@ -29,9 +32,11 @@ import {
   getUserApi,
 } from "../api/authentication";
 import { createBlogApi } from "../api/blogs";
+import SearchIcon from "@mui/icons-material/Search";
 
-function Header({ sections, title }) {
+function Header({ sections, title, search, setSearch }) {
   const [hide, setHide] = useState(true);
+  const [value, setValue] = useState(search);
   const location = useLocation();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -48,8 +53,8 @@ function Header({ sections, title }) {
     location.reload();
   };
 
-  const [open, setOpen] = React.useState(false);
-  const [show, setShow] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -129,7 +134,7 @@ function Header({ sections, title }) {
       alert(resp.response.data.message);
     }
   };
-  
+
   const handleEnableDisableUser = async (userId, enable) => {
     if (enable) {
       await enableUser(userId);
@@ -151,12 +156,12 @@ function Header({ sections, title }) {
       {!hide && (
         <>
           <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <Button size="small">Subscribe</Button>
+            {/* <Button size="small">Subscribe</Button> */}
             <Typography
               component="h2"
               variant="h5"
               color="inherit"
-              align="center"
+              // align="center"
               noWrap
               sx={{ flex: 1 }}
             >
@@ -164,6 +169,25 @@ function Header({ sections, title }) {
                 {title}
               </Link>
             </Typography>
+            <FormControl sx={{ m: 1, width: "20ch" }} variant="outlined">
+              <OutlinedInput
+                size="small"
+                placeholder="Search any topic"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      edge="end"
+                      sx={{ width: "auto" }}
+                      onClick={() => setSearch(value)}
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
             <Button
               sx={{ width: "auto" }}
               // color="secondary"
@@ -310,6 +334,12 @@ function Header({ sections, title }) {
               <li>
                 <hr className="dropdown-divider" />
               </li>
+              <li>
+                <Link to={'/unsubscribed'} className="dropdown-item">unSubscribed Blogs</Link>
+              </li>
+              {/* <li>
+                <hr className="dropdown-divider" />
+              </li> */}
               {user && user.role === "Administrator" && (
                 <>
                   <li>

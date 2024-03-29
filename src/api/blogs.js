@@ -62,7 +62,35 @@ const addCommentApi = async (id, comment) => {
       headers: { "content-type": "application/json", authtoken },
       url: `${process.env.REACT_APP_URL}/blogs/${id}`,
       method: "POST",
-      data: JSON.stringify({comment}),
+      data: JSON.stringify({ comment }),
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const subscribeApi = async (id) => {
+  const authtoken = localStorage.getItem("token");
+  try {
+    const response = await axios({
+      headers: { "content-type": "application/json", authtoken },
+      url: `${process.env.REACT_APP_URL}/blogs/subscribe/${id}`,
+      method: "PUT",
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+const unSubscribeApi = async (id) => {
+  const authtoken = localStorage.getItem("token");
+  try {
+    const response = await axios({
+      headers: { "content-type": "application/json", authtoken },
+      url: `${process.env.REACT_APP_URL}/blogs/unsubscribe/${id}`,
+      method: "PUT",
     });
     return response;
   } catch (error) {
@@ -76,4 +104,6 @@ export {
   getOneBlogApi,
   deleteBlogApi,
   addCommentApi,
+  subscribeApi,
+  unSubscribeApi,
 };
