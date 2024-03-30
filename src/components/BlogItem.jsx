@@ -6,8 +6,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { addCommentApi } from "../api/blogs";
-import { getUserApi } from "../api/authentication";
+import { addCommentApi, openaiCommentApi } from "../api/blogs";
+import { getAllUsers } from "../api/authentication";
 
 const BlogItem = ({
   blog: {
@@ -50,29 +50,28 @@ const BlogItem = ({
   };
 
   const [users, setUsers] = useState({});
+  const fetchAllUsers = async () => {
+    const res = await getAllUsers();
+    if (res.data) {
+      setUsers(res.data);
+    } else {
+      alert("You are not Authorized");
+    }
+  };
+
+  const generateComment = async () => {
+    const res = await openaiCommentApi(title, description);
+    if (res.data) {
+      setComment(res.data);
+    } else {
+      alert(res.response.data.message);
+    }
+  };
+
   useEffect(() => {
-    const fetchUser = async (id) => {
-      const res = await getUserApi(id);
-      if (res.data) {
-        setUsers((prevUsers) => ({
-          ...prevUsers,
-          [id]: res.data.username,
-        }));
-      } else {
-        console.log(res);
-        setUsers((prevUsers) => ({
-          ...prevUsers,
-          [id]: "Unknown",
-        }));
-      }
-    };
-    comments.forEach((comment) => {
-      if (!users[comment.user]) {
-        fetchUser(comment.user);
-      }
-    });
+    fetchAllUsers();
     // eslint-disable-next-line
-  }, [comments]);
+  }, []);
 
   return (
     <div className="blogItem-wrap">
@@ -116,10 +115,18 @@ const BlogItem = ({
                       }}
                     />
                     <div className="text-black">
-                      <b>{users[comment.user]}</b>
-                      <br />
-                      {comment.comment}
-                    </div>
+                    <b>
+                      {users &&
+                      users.length > 0 &&
+                      users.filter((user) => user._id === comment.user).length >
+                        0
+                        ? users.filter((user) => user._id === comment.user)[0]
+                            .username
+                        : "Unknown"}
+                    </b>
+                    <br />
+                    {comment.comment}
+                  </div>
                   </div>
                 ))}
               <form
@@ -138,13 +145,24 @@ const BlogItem = ({
                   onChange={(e) => setComment(e.target.value)}
                   className="comment-input"
                 />
-                <button
+                {/*<button
                   className="btn btn-primary my-2 w-auto position-absolute"
                   style={{ right: "2%", top: "-3%" }}
                   type="submit"
                 >
                   Post
+              </button>*/}
+              <div className="comment-buttons">
+                <button
+                  className="btn btn-primary my-2 mx-2 w-auto text-white"
+                  onClick={() => generateComment()}
+                >
+                  Auto Generate
                 </button>
+                <button className="btn btn-primary my-2 w-auto" type="submit">
+                  Post
+                </button>
+              </div>
               </form>
             </div>
           </DialogContent>
