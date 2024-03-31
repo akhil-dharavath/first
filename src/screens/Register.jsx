@@ -54,7 +54,7 @@ const Register = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3" style={{ textAlign: "left" }}>
-            <Form.Label>Role (Admin, Moderator, Student, Staff)</Form.Label>
+            <Form.Label>Role (Administrator, Moderator, Student, Staff)</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter Role"

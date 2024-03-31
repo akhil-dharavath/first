@@ -60,19 +60,21 @@ const BlogList = ({ search }) => {
     } else {
       getUser();
     }
-    getAddress();
+    // getAddress();
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    getTopStories();
+    // getTopStories();
     // eslint-disable-next-line
   }, [address]);
 
   return (
     <>
       <div className="blogList-wrap app">
-        {topStories &&
+        {location === "" &&
+          search === "" &&
+          topStories &&
           topStories.length > 0 &&
           topStories.map((story) => (
             <div className="blogItem-wrap">

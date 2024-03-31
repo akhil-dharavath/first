@@ -33,6 +33,8 @@ import {
 } from "../api/authentication";
 import { createBlogApi } from "../api/blogs";
 import SearchIcon from "@mui/icons-material/Search";
+import OpenAi from "./OpenAi";
+import { enqueueSnackbar } from "notistack";
 
 function Header({ sections, title, search, setSearch }) {
   const [hide, setHide] = useState(true);
@@ -96,6 +98,7 @@ function Header({ sections, title, search, setSearch }) {
     e.preventDefault();
     const res = await createBlogApi(addPost);
     if (res.data) {
+      enqueueSnackbar("Successfully blog has been added!", { variant: "success" });
       handleClose();
       // window.location.reload();
       const path = addPost.category.toLowerCase();
@@ -188,6 +191,17 @@ function Header({ sections, title, search, setSearch }) {
                 }
               />
             </FormControl>
+            {/* <Button
+              sx={{ width: "auto" }}
+              // color="secondary"
+              className="mx-2"
+              variant="outlined"
+              size="small"
+              // onClick={handleClickOpen}
+            >
+              Open AI
+            </Button> */}
+            <OpenAi />
             <Button
               sx={{ width: "auto" }}
               // color="secondary"
