@@ -4,15 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginApi } from "../api/authentication";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [details, setDetails] = useState({
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails({ ...details, [name]: value });
   };
-  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await loginApi(details);

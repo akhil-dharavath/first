@@ -15,16 +15,7 @@ import { getEventApi, suggestApi } from "../api/blogs";
 export default function OpenAi() {
   const [openFirst, setOpenFirst] = React.useState(false);
   const [firstLoading, setFirstLoading] = React.useState(false);
-
-  const [openSecond, setOpenSecond] = React.useState(false);
-  const [secondLoading, setSecondLoading] = React.useState(false);
-
   const [first, setFirst] = React.useState("");
-  const [second, setSecond] = React.useState([]);
-  const [location, setLocation] = React.useState("");
-
-  const [address, setAddress] = React.useState({});
-  //   const [topStories, setTopStories] = React.useState([]);
 
   const handleClickOpenFirst = async () => {
     setOpenFirst(true);
@@ -43,6 +34,16 @@ export default function OpenAi() {
     }
   };
 
+  const handleCloseFirst = () => {
+    setOpenFirst(false);
+    setFirst("");
+    setLocation("");
+  };
+
+  const [openSecond, setOpenSecond] = React.useState(false);
+  const [secondLoading, setSecondLoading] = React.useState(false);
+  const [second, setSecond] = React.useState([]);
+
   const secondSubmit = async (question) => {
     const res = await getEventApi(question);
     if (res.data) {
@@ -60,17 +61,14 @@ export default function OpenAi() {
     setOpenSecond(true);
   };
 
-  const handleCloseFirst = () => {
-    setOpenFirst(false);
-    setFirst("");
-    setLocation("");
-  };
-
   const handleCloseSecond = () => {
     setOpenSecond(false);
     setSecond([]);
     setLocation("");
   };
+
+  const [location, setLocation] = React.useState("");
+  const [address, setAddress] = React.useState({});
 
   const getAddress = async () => {
     const res = await axios({ url: "https://ipapi.co/json/", method: "GET" });
@@ -91,27 +89,10 @@ export default function OpenAi() {
     }
   };
 
-  //   const getTopStories = async () => {
-  //     if (address && address.region) {
-  //       const res = await getTopStoriesApi(address.region);
-  //       if (res && res.data) {
-  //         setTopStories(res.data);
-  //       } else {
-  //         console.log(res);
-  //         // alert(res.response.data.message);
-  //       }
-  //     }
-  //   };
-
   useEffect(() => {
     getAddress();
     // eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    // getTopStories();
-    // eslint-disable-next-line
-  }, [address]);
 
   return (
     <>
@@ -130,7 +111,7 @@ export default function OpenAi() {
           <li>
             <a
               className="dropdown-item"
-            //   href="/"
+              //   href="/"
               onClick={handleClickOpenFirst}
             >
               Suggest Activities
@@ -139,10 +120,10 @@ export default function OpenAi() {
           <li>
             <a
               className="dropdown-item"
-            //   href="/"
+              //   href="/"
               onClick={handleClickOpenSecond}
             >
-              real time events
+              Real time events
             </a>
           </li>
         </ul>
@@ -229,6 +210,7 @@ export default function OpenAi() {
               const formData = new FormData(event.currentTarget);
               const formJson = Object.fromEntries(formData.entries());
               const question = formJson.question;
+              setSecondLoading(true);
               secondSubmit(question);
             },
           }}

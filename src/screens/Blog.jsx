@@ -14,25 +14,25 @@ import { getUserApi } from "../api/authentication";
 
 const Blog = () => {
   const { id } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [user, setUser] = useState({});
   const [subscribed, setSubscribed] = useState(null);
 
-  const getBlog = async () => {
-    const res = await getOneBlogApi(id);
-    if (res.data) {
-      setBlog(res.data);
-    } else {
-      alert(res.response.data.messege);
-    }
-  };
-
+  const [user, setUser] = useState({});
   const getUser = async () => {
     const res = await getUserApi();
     if (res.data) {
       setUser(res.data);
       const count = res.data.unSubscribed.filter((sub) => sub === id).length;
       setSubscribed(count === 0);
+    } else {
+      alert(res.response.data.messege);
+    }
+  };
+
+  const [blog, setBlog] = useState(null);
+  const getBlog = async () => {
+    const res = await getOneBlogApi(id);
+    if (res.data) {
+      setBlog(res.data);
     } else {
       alert(res.response.data.messege);
     }
@@ -48,29 +48,29 @@ const Blog = () => {
     }
   };
 
-  const handleSubscribe=async()=>{
+  const handleSubscribe = async () => {
     const res = await subscribeApi(id);
     if (res.data) {
-      setSubscribed(true)
+      setSubscribed(true);
     } else {
       alert(res.response.data.message);
     }
-  }
+  };
 
-  const handleUnSubscribe=async()=>{
+  const handleUnSubscribe = async () => {
     const res = await unSubscribeApi(id);
     if (res.data) {
-      setSubscribed(false)
+      setSubscribed(false);
     } else {
       alert(res.response.data.message);
     }
-  }
+  };
 
   useEffect(() => {
     getBlog();
     getUser();
     // eslint-disable-next-line
-  }, []);  
+  }, []);
 
   return (
     <>
@@ -113,7 +113,20 @@ const Blog = () => {
             <h1>{blog.title}</h1>
           </header>
           <img src={blog.cover} alt="cover" />
-          <p className="blog-desc">{blog.description} This is some dummy data Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure eum excepturi quasi corrupti doloribus quia fugit ipsam deserunt inventore iusto recusandae natus facere ipsum tempora, aliquam amet facilis aspernatur maiores! Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere fuga cupiditate ea deserunt? Molestias, accusamus assumenda. Autem minus voluptates expedita soluta molestiae, repellendus repudiandae consequuntur deserunt mollitia rerum est debitis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptas, quis quae vitae quod assumenda aliquam porro asperiores unde hic natus a earum, mollitia soluta blanditiis debitis quasi. Ratione, architecto!</p>
+          <p className="blog-desc">
+            {blog.description} This is some dummy data Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Iure eum excepturi quasi corrupti
+            doloribus quia fugit ipsam deserunt inventore iusto recusandae natus
+            facere ipsum tempora, aliquam amet facilis aspernatur maiores! Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Facere fuga
+            cupiditate ea deserunt? Molestias, accusamus assumenda. Autem minus
+            voluptates expedita soluta molestiae, repellendus repudiandae
+            consequuntur deserunt mollitia rerum est debitis! Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Molestiae voluptas, quis quae
+            vitae quod assumenda aliquam porro asperiores unde hic natus a
+            earum, mollitia soluta blanditiis debitis quasi. Ratione,
+            architecto!
+          </p>
         </div>
       ) : (
         <EmptyList />

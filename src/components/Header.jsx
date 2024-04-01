@@ -40,25 +40,48 @@ function Header({ sections, title, search, setSearch }) {
   const [hide, setHide] = useState(true);
   const [value, setValue] = useState(search);
   const location = useLocation();
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      setHide(true);
-    } else {
-      setHide(false);
-    }
-  }, [location]);
-
+  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const [addPost, setAddPost] = useState({
+    title: "",
+    description: "",
+    cover: "",
+    authorName: "",
+    createdAt: "",
+    category: "",
+  });
+  const [user, setUser] = useState({});
+  const [users, setUsers] = useState([]);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/auth/login");
     location.reload();
   };
 
-  const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAddPost({ ...addPost, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await createBlogApi(addPost);
+    if (res.data) {
+      enqueueSnackbar("Successfully blog has been added!", {
+        variant: "success",
+      });
+      handleClose();
+      // window.location.reload();
+      const path = addPost.category.toLowerCase();
+      navigate(`/${path}`);
+    } else {
+      alert(res.response.data.message);
+    }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,36 +103,15 @@ function Header({ sections, title, search, setSearch }) {
     });
   };
 
-  const [addPost, setAddPost] = useState({
-    title: "",
-    description: "",
-    cover: "",
-    authorName: "",
-    createdAt: "",
-    category: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAddPost({ ...addPost, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await createBlogApi(addPost);
-    if (res.data) {
-      enqueueSnackbar("Successfully blog has been added!", { variant: "success" });
-      handleClose();
-      // window.location.reload();
-      const path = addPost.category.toLowerCase();
-      navigate(`/${path}`);
+  const fetchUsers = async () => {
+    let resp = await getAllUsers();
+    if (resp.data) {
+      setUsers(resp.data);
     } else {
-      alert(res.response.data.message);
+      alert(resp.response.data.message);
     }
   };
 
-  const [user, setUser] = useState({});
-  const [users, setUsers] = useState([]);
   const getUser = async () => {
     if (localStorage.getItem("token")) {
       const res = await getUserApi();
@@ -129,15 +131,6 @@ function Header({ sections, title, search, setSearch }) {
     }
   };
 
-  const fetchUsers = async () => {
-    let resp = await getAllUsers();
-    if (resp.data) {
-      setUsers(resp.data);
-    } else {
-      alert(resp.response.data.message);
-    }
-  };
-
   const handleEnableDisableUser = async (userId, enable) => {
     if (enable) {
       await enableUser(userId);
@@ -147,6 +140,14 @@ function Header({ sections, title, search, setSearch }) {
     // Refetch users after enabling/disabling user
     fetchUsers();
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      setHide(true);
+    } else {
+      setHide(false);
+    }
+  }, [location]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -349,7 +350,9 @@ function Header({ sections, title, search, setSearch }) {
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <Link to={'/unsubscribed'} className="dropdown-item">unSubscribed Blogs</Link>
+                <Link to={"/unsubscribed"} className="dropdown-item">
+                  unSubscribed Blogs
+                </Link>
               </li>
               {/* <li>
                 <hr className="dropdown-divider" />

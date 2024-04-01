@@ -22,9 +22,20 @@ const BlogItem = ({
     comments,
   },
 }) => {
-  const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const [open, setOpen] = useState(false);
+  const [comment, setComment] = useState("");
+  const [users, setUsers] = useState({});
+
+  const fetchAllUsers = async () => {
+    const res = await getAllUsers();
+    if (res.data) {
+      setUsers(res.data);
+    } else {
+      alert("You are not Authorized");
+    }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,7 +45,6 @@ const BlogItem = ({
     setOpen(false);
   };
 
-  const [comment, setComment] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (comment === "") {
@@ -46,16 +56,6 @@ const BlogItem = ({
       window.location.reload();
     } else {
       alert(res.response.data.message);
-    }
-  };
-
-  const [users, setUsers] = useState({});
-  const fetchAllUsers = async () => {
-    const res = await getAllUsers();
-    if (res.data) {
-      setUsers(res.data);
-    } else {
-      alert("You are not Authorized");
     }
   };
 
@@ -115,18 +115,18 @@ const BlogItem = ({
                       }}
                     />
                     <div className="text-black">
-                    <b>
-                      {users &&
-                      users.length > 0 &&
-                      users.filter((user) => user._id === comment.user).length >
-                        0
-                        ? users.filter((user) => user._id === comment.user)[0]
-                            .username
-                        : "Unknown"}
-                    </b>
-                    <br />
-                    {comment.comment}
-                  </div>
+                      <b>
+                        {users &&
+                        users.length > 0 &&
+                        users.filter((user) => user._id === comment.user)
+                          .length > 0
+                          ? users.filter((user) => user._id === comment.user)[0]
+                              .username
+                          : "Unknown"}
+                      </b>
+                      <br />
+                      {comment.comment}
+                    </div>
                   </div>
                 ))}
               <form
@@ -152,17 +152,17 @@ const BlogItem = ({
                 >
                   Post
               </button>*/}
-              <div className="comment-buttons">
-                <button
-                  className="btn btn-primary my-2 mx-2 w-auto text-white"
-                  onClick={() => generateComment()}
-                >
-                  Auto Generate
-                </button>
-                <button className="btn btn-primary my-2 w-auto" type="submit">
-                  Post
-                </button>
-              </div>
+                <div className="comment-buttons">
+                  <button
+                    className="btn btn-primary my-2 mx-2 w-auto text-white"
+                    onClick={() => generateComment()}
+                  >
+                    Auto Generate
+                  </button>
+                  <button className="btn btn-primary my-2 w-auto" type="submit">
+                    Post
+                  </button>
+                </div>
               </form>
             </div>
           </DialogContent>

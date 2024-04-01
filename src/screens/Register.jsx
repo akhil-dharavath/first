@@ -4,18 +4,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { registerApi } from "../api/authentication";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [details, setDetails] = useState({
     username: "",
     email: "",
     password: "",
     role:""
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails({ ...details, [name]: value });
   };
 
-  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await registerApi(details);
